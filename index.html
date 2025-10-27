@@ -3,18 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>주식, 코인 물타기 계산기</title>
+<title>주식·코인 물타기 계산기</title>
+<meta name="description" content="주식과 코인의 물타기 평균 단가를 손쉽게 계산할 수 있는 웹 계산기입니다. 추가 매수 수량과 단가를 입력하면 새로운 평균 단가를 자동 계산해줍니다.">
+<meta name="keywords" content="주식, 코인, 물타기, 평균단가, 계산기, 투자, 매수">
+<meta name="author" content="당신 이름">
+<meta property="og:title" content="주식·코인 물타기 계산기">
+<meta property="og:description" content="주식과 코인의 물타기 평균 단가를 계산할 수 있는 웹사이트입니다.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://example.com/썸네일이미지.jpg">
+<meta property="og:url" content="https://username.github.io/your-repo/">
 <style>
   body {
     font-family: 'Noto Sans KR', sans-serif;
-    margin: 40px auto;
+    margin: 50px;
     background-color: #f9fafb;
     color: #333;
   }
   h2 {
     text-align: center;
     color: #222;
-    font-size: 1.6rem;
   }
   .container {
     max-width: 450px;
@@ -28,7 +35,6 @@
     font-weight: 600;
     display: block;
     margin-bottom: 5px;
-    font-size: 0.95rem;
   }
   input {
     width: 100%;
@@ -36,9 +42,8 @@
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 16px;
     text-align: right;
-    box-sizing: border-box;
   }
   .result-box {
     text-align: center;
@@ -54,7 +59,7 @@
     color: #444;
   }
   .result-value {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 900;
     color: #0077cc;
     margin-top: 8px;
@@ -63,35 +68,12 @@
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
-  /* ✅ 모바일 최적화 */
-  @media (max-width: 500px) {
-    body {
-      margin: 20px;
-    }
-    .container {
-      padding: 18px;
-    }
-    h2 {
-      font-size: 1.4rem;
-    }
-    input {
-      font-size: 0.95rem;
-      padding: 9px;
-    }
-    .result-label {
-      font-size: 16px;
-    }
-    .result-value {
-      font-size: 26px;
-    }
-  }
 </style>
 </head>
 <body>
 
   <div class="container">
-    <h2>📈 주식, 코인 물타기 계산기</h2>
+    <h2>📈 주식·코인 물타기 계산기</h2>
 
     <label>현재 보유 수량</label>
     <input type="text" id="currentQty" placeholder="예: 100">
