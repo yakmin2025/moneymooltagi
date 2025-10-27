@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주식, 코인 물타기 계산기</title>
+<style>
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 40px auto;
+    background-color: #f9fafb;
+    color: #333;
+  }
+  h2 {
+    text-align: center;
+    color: #222;
+    font-size: 1.6rem;
+  }
+  .container {
+    max-width: 450px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: right;
+    box-sizing: border-box;
+  }
+  .result-box {
+    text-align: center;
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f1f5f9;
+    border-radius: 12px;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  .result-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #444;
+  }
+  .result-value {
+    font-size: 30px;
+    font-weight: 900;
+    color: #0077cc;
+    margin-top: 8px;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ✅ 모바일 최적화 */
+  @media (max-width: 500px) {
+    body {
+      margin: 20px;
+    }
+    .container {
+      padding: 18px;
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+    input {
+      font-size: 0.95rem;
+      padding: 9px;
+    }
+    .result-label {
+      font-size: 16px;
+    }
+    .result-value {
+      font-size: 26px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>📈 주식, 코인 물타기 계산기</h2>
+
+    <label>현재 보유 수량</label>
+    <input type="text" id="currentQty" placeholder="예: 100">
+
+    <label>현재 평균 단가</label>
+    <input type="text" id="currentPrice" placeholder="예: 5,000">
+
+    <label>추가 매수 수량</label>
+    <input type="text" id="addQty" placeholder="예: 50">
+
+    <label>추가 매수 단가</label>
+    <input type="text" id="addPrice" placeholder="예: 4,000">
+
+    <div class="result-box">
+      <div class="result-label">새로운 평균 단가</div>
+      <div id="newAvgPrice" class="result-value">-</div>
+    </div>
+  </div>
+
+<script>
+function formatNumber(num) {
+  if (!num) return '';
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function parseNumber(str) {
+  return parseFloat(str.replace(/,/g, '')) || 0;
+}
+
+function calculate() {
+  const currentQty = parseNumber(document.getElementById('currentQty').value);
+  const currentPrice = parseNumber(document.getElementById('currentPrice').value);
+  const addQty = parseNumber(document.getElementById('addQty').value);
+  const addPrice = parseNumber(document.getElementById('addPrice').value);
+
+  if (currentQty + addQty === 0) return;
+
+  const newAvg = ((currentQty * currentPrice) + (addQty * addPrice)) / (currentQty + addQty);
+  document.getElementById('newAvgPrice').textContent = formatNumber(newAvg.toFixed(2));
+}
+
+document.querySelectorAll('input').forEach(input => {
+  input.addEventListener('input', e => {
+    const value = e.target.value.replace(/,/g, '');
+    if (!isNaN(value) && value !== '') {
+      e.target.value = formatNumber(value);
+      calculate();
+    } else if (value === '') {
+      e.target.value = '';
+      calculate();
+    }
+  });
+});
+</script>
+
+</body>
+</html>
