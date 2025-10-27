@@ -3,95 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>주식·코인 물타기 계산기</title>
-<meta name="description" content="주식과 코인의 물타기 평균 단가를 손쉽게 계산할 수 있는 웹 계산기입니다. 추가 매수 수량과 단가를 입력하면 새로운 평균 단가를 자동 계산해줍니다.">
-<meta name="keywords" content="주식, 코인, 물타기, 평균단가, 계산기, 투자, 매수">
-<meta name="author" content="당신 이름">
-<meta property="og:title" content="주식·코인 물타기 계산기">
-<meta property="og:description" content="주식과 코인의 물타기 평균 단가를 계산할 수 있는 웹사이트입니다.">
+
+<!-- 검색 최적화용 Meta -->
+<title>주식, 코인 물타기 계산기</title>
+<meta name="description" content="주식과 코인 투자자를 위한 물타기 평균 단가 계산기. 현재 보유 수량과 단가, 추가 매수 금액을 입력하면 새로운 평균 단가를 자동 계산합니다.">
+<meta name="keywords" content="주식, 코인, 물타기, 평균 단가, 투자 계산기">
+<meta name="author" content="작성자 이름">
+
+<!-- Open Graph (SNS 공유 최적화) -->
+<meta property="og:title" content="주식, 코인 물타기 계산기">
+<meta property="og:description" content="현재 보유 수량과 단가, 추가 매수 금액을 입력하면 새로운 평균 단가를 자동 계산하는 웹 계산기입니다.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://example.com/썸네일이미지.jpg">
-<meta property="og:url" content="https://username.github.io/your-repo/">
+<meta property="og:url" content="https://yourgithubusername.github.io/yourrepo/">
+<meta property="og:image" content="https://yourgithubusername.github.io/yourrepo/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="주식, 코인 물타기 계산기">
+<meta name="twitter:description" content="현재 보유 수량과 단가, 추가 매수 금액을 입력하면 새로운 평균 단가를 자동 계산하는 웹 계산기입니다.">
+<meta name="twitter:image" content="https://yourgithubusername.github.io/yourrepo/og-image.png">
+
+<!-- CSS & 스타일 -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
 <style>
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    margin: 50px;
-    background-color: #f9fafb;
-    color: #333;
-  }
-  h2 {
-    text-align: center;
-    color: #222;
-  }
-  .container {
-    max-width: 450px;
-    margin: 30px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  label {
-    font-weight: 600;
-    display: block;
-    margin-bottom: 5px;
-  }
-  input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    text-align: right;
-  }
-  .result-box {
-    text-align: center;
-    margin-top: 25px;
-    padding: 20px;
-    background-color: #f1f5f9;
-    border-radius: 12px;
-    animation: fadeIn 0.6s ease-in-out;
-  }
-  .result-label {
-    font-size: 18px;
-    font-weight: 700;
-    color: #444;
-  }
-  .result-value {
-    font-size: 28px;
-    font-weight: 900;
-    color: #0077cc;
-    margin-top: 8px;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9fafb; color: #333; margin: 50px; }
+  h2 { text-align: center; color: #222; }
+  .container { max-width: 450px; margin: 30px auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  label { font-weight: 600; display: block; margin-bottom: 5px; }
+  input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; text-align: right; }
+  .result-box { text-align: center; margin-top: 25px; padding: 20px; background-color: #f1f5f9; border-radius: 12px; animation: fadeIn 0.6s ease-in-out; }
+  .result-label { font-size: 18px; font-weight: 700; color: #444; }
+  .result-value { font-size: 28px; font-weight: 900; color: #0077cc; margin-top: 8px; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
 
-  <div class="container">
-    <h2>📈 주식·코인 물타기 계산기</h2>
+<div class="container">
+  <h2>📊 주식, 코인 물타기 계산기</h2>
 
-    <label>현재 보유 수량</label>
-    <input type="text" id="currentQty" placeholder="예: 100">
+  <label>현재 보유 수량</label>
+  <input type="text" id="currentQty" placeholder="예: 100">
 
-    <label>현재 평균 단가</label>
-    <input type="text" id="currentPrice" placeholder="예: 5,000">
+  <label>현재 평균 단가</label>
+  <input type="text" id="currentPrice" placeholder="예: 5,000">
 
-    <label>추가 매수 수량</label>
-    <input type="text" id="addQty" placeholder="예: 50">
+  <label>추가 매수 수량</label>
+  <input type="text" id="addQty" placeholder="예: 50">
 
-    <label>추가 매수 단가</label>
-    <input type="text" id="addPrice" placeholder="예: 4,000">
+  <label>추가 매수 단가</label>
+  <input type="text" id="addPrice" placeholder="예: 4,000">
 
-    <div class="result-box">
-      <div class="result-label">새로운 평균 단가</div>
-      <div id="newAvgPrice" class="result-value">-</div>
-    </div>
+  <div class="result-box">
+    <div class="result-label">새로운 평균 단가</div>
+    <div id="newAvgPrice" class="result-value">-</div>
   </div>
+</div>
 
 <script>
 function formatNumber(num) {
